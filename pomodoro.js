@@ -1,8 +1,8 @@
-const readline = require('readline');
+import { createInterface } from 'readline';
 
-const { stdin: input, stdout: output } = require('process');
+import { stdin as input, stdout as output } from 'process';
 
-const rl = readline.createInterface( { input, output });
+const rl = createInterface( { input, output });
 
 const workDuration = 25;
 const shortBreakDuration = 5;
@@ -19,12 +19,12 @@ for (let i = 1; i < pomodoroCycles; i++) {
     }, (workDuration * 60 * 1000 * i) + (shortBreakDuration * 60 * 1000 * (i - 1)));
 
     setTimeout(() => {
-        console.log("Time is up! Let's get to work.")
+        console.log("Time is up! Let's get back to work.")
     }, (workDuration * 60 * 1000 * i) + (shortBreakDuration * 60 * 1000 * i));
 };
 
 setTimeout(() => {
-    console.log("You did 4 amazing pomodoro cycles and deserve some rest. We'll let you know when you can get back to work.");
+    console.log("You did 4 amazing pomodoro cycles and deserve some rest. I'll let you know when you can get back to work.");
     setTimeout(() => {
         console.log("Your long break is done. Restart the timer for another pomodoro session.");
         rl.close();

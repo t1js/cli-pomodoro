@@ -1,0 +1,12 @@
+{
+  "name": "cli-pomodoro",
+  "version": "1.0.0",
+  "description": "CLI-based Pomodoro app created durind TheCodeDose classes.",
+  "main": "pomodoro.js",
+  "type": "module",
+  "scripts": {
+    "start": "node pomodoro.js"
+  },
+  "author": "t1js",
+  "license": "ISC"
+}
