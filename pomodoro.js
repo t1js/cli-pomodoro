@@ -7,13 +7,13 @@ const rl = readline.createInterface( { input, output });
 const workDuration = 25;
 const shortBreakDuration = 5;
 const longBreakDuration = 25;
-const pomodoros = 4;
+const pomodoroCycles = 4;
 
 
 function startPomodoro() {
     console.log("Timer started. Let's do this!");
 
-for (let i = 1; i < pomodoros; i++) {
+for (let i = 1; i < pomodoroCycles; i++) {
     setTimeout(() => {
         console.log("Cycle " + i + " is finised! Let's have a break.");
     }, (workDuration * 60 * 1000 * i) + (shortBreakDuration * 60 * 1000 * (i - 1)));
@@ -29,7 +29,7 @@ setTimeout(() => {
         console.log("Your long break is done. Restart the timer for another pomodoro session.");
         rl.close();
     }, longBreakDuration * 60 * 1000);
-}, (workDuration * 60 * 1000 * pomodoros) + (shortBreakDuration * 60 * 1000 * (pomodoros - 1)));
+}, (workDuration * 60 * 1000 * pomodoroCycles) + (shortBreakDuration * 60 * 1000 * (pomodoroCycles - 1)));
 }
 
 rl.question('Press P (for pomodoro) to start timer: ', (answer) => {
