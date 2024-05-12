@@ -10,7 +10,7 @@ const longBreakDuration = 25;
 const pomodoroCycles = 4;
 
 
-function startPomodoro() {
+function startTimer() {
     console.log("Timer started. Let's do this!");
 
 for (let i = 1; i < pomodoroCycles; i++) {
@@ -32,12 +32,32 @@ setTimeout(() => {
 }, (workDuration * 60 * 1000 * pomodoroCycles) + (shortBreakDuration * 60 * 1000 * (pomodoroCycles - 1)));
 }
 
-rl.question('Press P (for pomodoro) to start timer: ', (answer) => {
+let isFirstTime = true;
 
-    if (answer === "P" || answer === "p") {
-        startPomodoro();
+function startPomodoro() {
+    if (isFirstTime) {
+    rl.question("Press P (for pomodoro) to start timer: ", (answer) => {
+        if (answer === "P" || answer === "p") {
+            startTimer();
+        } else {
+            console.log("Unsupported input, try again.");
+            startPomodoro();
+    }
+    isFirstTime = false;
+})
     } else {
-        console.log("Unsupported input, try again.");
-        rl.close();
+    rl.question("Press P (for pomodoro) to start timer or E to exit: ", (answer) => {
+        if (answer === "P" || answer === "p") {
+            startTimer();
+        } else if (answer === "E" || answer === "e") {
+            console.log("Exiting the program. See you later!")
+            rl.close();
+          }  else {
+            console.log("Unsupported input, try again.");
+            startPomodoro();
     }
 })
+}
+}
+
+startPomodoro();
